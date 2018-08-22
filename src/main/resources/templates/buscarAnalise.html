@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+	  layout:decorator="@{~/base/layout}">
+<head>
+	<meta charset="UTF-8"/>
+
+	<title>Novo cadastro de usuário</title>
+ 
+	<script type="text/javascript">
+ 
+		function limparMensagem(){
+ 
+			document.getElementById('input-nome').value='';
+		}
+		
+
+	</script>
+	
+	<script type="text/javascript" scr="webjars/jquery/3.1.0/jquery.min.js"></script>
+	<script type="text/javascript" scr="webjars/bootstrap/4.0.0-alpha.2/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="webjars/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css"/>
+	<link  rel="stylesheet" th:href="@{/css/material.min.css}"/>
+    <link  rel="stylesheet" th:href="@{/css/sistema.css}"/>
+ 
+    <script type="text/javascript" th:src="@{/js/material.min.js}"></script>
+ 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/> 
+ 
+</head>
+<body>
+
+<header class="mdl-layout__header">   	   	
+	    <div class="mdl-layout__header-row">
+	 
+	      <a class="mdl-navigation__link" th:href="@{/}">    
+	      	<span class="mdl-layout-title">Analise Sensorial de Alimentos</span>
+		  </a>          
+	 
+	      <div class="mdl-layout-spacer"></div>      
+	      <nav class="mdl-navigation mdl-layout--large-screen-only">
+	 
+	      	<!-- REDIRECIONA PARA A HOME PAGE -->
+	      	<a class="mdl-navigation__link" th:href="@{/}">Home</a>
+	
+	      </nav>
+	    </div>
+	  </header>
+ 
+<section layout:fragment="content">
+ 
+ <!-- MONTANDO O GRID PARA POSICIONAR O FORMULÁRIO NO CENTRO -->   
+<div class="mdl-grid">   
+ <div class="mdl-layout-spacer"></div>    
+ <section class="section--center mdl-grid mdl-shadow--4dp mdl-color--white">
+ 
+  <div class="mdl-cell mdl-cell--12-col">
+<div class="alinhar-centro">
+	<span style="padding-left:5px;">Busca de Analise</span>			  
+</div>
+ 
+<form role="form" action="#" th:action="@{/downloadExcel}" method="get" id="frmBuscar">
+	<fieldset>
+	<ul class="mdl-list">
+ 
+
+	 <!-- CAMPO NOME -->
+	 <li class="mdl-list__item">			 		  
+		 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		   <input class="mdl-textfield__input" type="text" id="input-nome" value="teste" name="codigo" onfocus="limparMensagem()"/>
+		   <label class="mdl-textfield__label" for="input-nome">Código...</label>
+		  
+		 </div>
+	 </li>
+ 
+
+ </ul>
+	 </fieldset>
+ 
+		<div class="mdl-grid">
+		  <div class="mdl-layout-spacer"></div>
+		  <div class="mdl-cell mdl-cell--4-col" style="padding-right:10px;">
+		  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Buscar</button>
+		  </div>
+		 </div>  
+</form>
+ 
+ 
+</div>
+ 
+</section>	
+    <div class="mdl-layout-spacer"></div>
+</div>
+ 
+</section>
+ 
+</body>
+ 
+</html>

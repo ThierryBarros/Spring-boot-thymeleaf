@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th:"http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+	<script type="text/javascript" scr="webjars/jquery/3.1.0/jquery.min.js"></script>
+	<script type="text/javascript" scr="webjars/bootstrap/4.0.0-alpha.2/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="webjars/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css"/>
+	<link  rel="stylesheet" th:href="@{/css/material.min.css}"/>
+    <link  rel="stylesheet" th:href="@{/css/sistema.css}"/>
+ 
+    <script type="text/javascript" th:src="@{/js/material.min.js}"></script>
+ 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>   
+</head>
+<body>
+
+
+
+	<body>
+
+	<header class="mdl-layout__header">   	   	
+	    <div class="mdl-layout__header-row">
+	 
+	      <a class="mdl-navigation__link" th:href="@{/}">    
+	      	<span class="mdl-layout-title">Analise Sensorial de Alimentos</span>
+		  </a>          
+	 
+	      <div class="mdl-layout-spacer"></div>      
+	      <nav class="mdl-navigation mdl-layout--large-screen-only">
+
+			<a class="mdl-navigation__link" th:href="@{/buscarAnalise}">Buscar</a>
+	      </nav>
+	    </div>
+	  </header>
+ 
+    <!-- MONTANDO O GRID PARA POSICIONAR O FORMULÁRIO NO CENTRO -->   
+   <div class="mdl-grid">   
+    <div class="mdl-layout-spacer"></div>    
+    <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--4dp mdl-color--white">    	
+    	<h4>&nbsp;Sistema de busca por análises&nbsp;</h4>    	
+	</section>	
+    <div class="mdl-layout-spacer"></div>
+</div>
+ 
+</section>
+
+	<div class="container">
+		<div class="card">
+			
+			<div class="card=block">
+				<table class="table table-hover">
+					<thead>
+					<tr>
+						<th>ID</th>
+						<th>NOME</th>
+						<th>CÓDIGO</th>
+					</tr>
+					
+					</thead>
+					<tbody>
+						<tr th:each="analise :${data.content}">
+							<td th:text="${analise.id}"></td>
+							<td th:text="${analise.nome}"></td>
+							<td th:text="${analise.codigo}"></td>
+						</tr>
+					</tbody>
+				</table>
+				<hr/>
+				<ul class="nav nav-pills">
+				<li class="nav-item" th:each="i : ${#numbers.sequence(0,data.totalPages-1)}">
+					<a th:href="@{/(page=${i})}" th:text="${i}" class="nav-link"
+					th:classappend="${currentPage}==${i}?'active':''"></a>
+				</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
